@@ -148,11 +148,13 @@
 
   /* ── HERO ── */
   #hero { min-height: 100vh; }
+  .section-window { container-type: inline-size; }
   .hero-name {
-    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-size: clamp(1rem, 6cqi, 5.5rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.02em;
+    white-space: nowrap;
     background: linear-gradient(135deg, var(--text) 40%, #aaaaaa);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -448,7 +450,7 @@
 <section id="hero">
   <div class="section-window">
     <div class="window-label">init.portfolio</div>
-    <div class="hero-name reveal">Monish<br/>Murali</div>
+    <div class="hero-name reveal">Monish Murali</div>
     <div class="hero-title reveal" style="transition-delay:0.1s">Electrical Engineer · IC Design · RF/Electromagnetics</div>
     <p class="hero-sub reveal" style="transition-delay:0.2s">
       Passionate about hardware — from analog circuits and RF systems to digital IC design and power electronics.
