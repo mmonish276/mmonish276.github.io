@@ -631,37 +631,37 @@
     <div class="window-label">projects.render()</div>
     <h2 class="section-heading reveal">Projects</h2>
     <div class="projects-grid stagger">
-      <div class="project-card">
+      <div class="project-card" onclick="openProject(0)">
         <div class="project-icon">⚡</div>
         <div class="project-name">FPGA Neural Accelerator</div>
         <div class="project-desc">Implemented a pipelined matrix multiplier on Xilinx Artix-7 for real-time inference at 100 MHz with 8-bit fixed-point arithmetic.</div>
         <div class="project-stack"><span class="stack-pill">VHDL</span><span class="stack-pill">Vivado</span><span class="stack-pill">Python</span></div>
       </div>
-      <div class="project-card">
+      <div class="project-card" onclick="openProject(1)">
         <div class="project-icon">📡</div>
         <div class="project-name">SDR Spectrum Analyzer</div>
         <div class="project-desc">Built a software-defined radio spectrum analyzer using RTL-SDR and GNU Radio. Displays 20 MHz bandwidth with real-time FFT waterfall.</div>
         <div class="project-stack"><span class="stack-pill">GNU Radio</span><span class="stack-pill">Python</span><span class="stack-pill">RTL-SDR</span></div>
       </div>
-      <div class="project-card">
+      <div class="project-card" onclick="openProject(2)">
         <div class="project-icon">🔋</div>
         <div class="project-name">BMS for Li-Ion Pack</div>
         <div class="project-desc">Designed a 4S battery management system with cell balancing, SOC estimation via Coulomb counting, and CAN bus telemetry.</div>
         <div class="project-stack"><span class="stack-pill">STM32</span><span class="stack-pill">CAN</span><span class="stack-pill">KiCad</span></div>
       </div>
-      <div class="project-card">
+      <div class="project-card" onclick="openProject(3)">
         <div class="project-icon">🤖</div>
         <div class="project-name">Autonomous Line Follower</div>
         <div class="project-desc">Designed a PID-controlled robot with IR array sensing, achieving sub-5 ms control loop latency on a custom 2-layer PCB.</div>
         <div class="project-stack"><span class="stack-pill">C</span><span class="stack-pill">ATmega</span><span class="stack-pill">Eagle</span></div>
       </div>
-      <div class="project-card">
+      <div class="project-card" onclick="openProject(4)">
         <div class="project-icon">🌡</div>
         <div class="project-name">IoT Environmental Monitor</div>
         <div class="project-desc">Multi-sensor node with MQTT over WiFi for temperature, humidity, PM2.5, and CO₂. OTA firmware updates via ESP-IDF.</div>
         <div class="project-stack"><span class="stack-pill">ESP32</span><span class="stack-pill">MQTT</span><span class="stack-pill">FreeRTOS</span></div>
       </div>
-      <div class="project-card">
+      <div class="project-card" onclick="openProject(5)">
         <div class="project-icon">🔬</div>
         <div class="project-name">Analog Front-End Design</div>
         <div class="project-desc">Low-noise amplifier and anti-aliasing filter chain for a biomedical ECG acquisition system with 24-bit ADC integration.</div>
