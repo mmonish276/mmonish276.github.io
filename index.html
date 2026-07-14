@@ -677,20 +677,20 @@
     <h2 class="section-heading reveal">Projects</h2>
     <div class="projects-grid stagger">
       <div class="project-card" onclick="openProject(0)">
-        <img class="project-img" src="PATH_TO_IMAGE_1.jpg" alt="FPGA Neural Accelerator">
-        <div class="project-caption">FPGA Neural Accelerator</div>
+        <img class="project-img" src="PATH_TO_IMAGE_1.jpg" alt="Vehicle Control Unit">
+        <div class="project-caption">Vehicle Control Unit</div>
       </div>
       <div class="project-card" onclick="openProject(1)">
-        <img class="project-img" src="PATH_TO_IMAGE_2.jpg" alt="SDR Spectrum Analyzer">
-        <div class="project-caption">SDR Spectrum Analyzer</div>
+        <img class="project-img" src="PATH_TO_IMAGE_2.jpg" alt="VectorNav Interface PCB">
+        <div class="project-caption">VectorNav Interface PCB</div>
       </div>
       <div class="project-card" onclick="openProject(2)">
-        <img class="project-img" src="PATH_TO_IMAGE_3.jpg" alt="BMS for Li-Ion Pack">
-        <div class="project-caption">BMS for Li-Ion Pack</div>
+        <img class="project-img" src="PATH_TO_IMAGE_3.jpg" alt="ThermaGlass">
+        <div class="project-caption">ThermaGlass</div>
       </div>
       <div class="project-card" onclick="openProject(3)">
-        <img class="project-img" src="PATH_TO_IMAGE_4.jpg" alt="Autonomous Line Follower">
-        <div class="project-caption">Autonomous Line Follower</div>
+        <img class="project-img" src="PATH_TO_IMAGE_4.jpg" alt="Superheterodyne receiver">
+        <div class="project-caption">Superheterodyne receiver</div>
       </div>
     </div>
   </div>
@@ -832,7 +832,7 @@ let isDark = true, isGlass = false;
 const PROJECTS = [
   {
     img: 'images/fpga.jpg',
-    title: 'FPGA Neural Accelerator',
+    title: 'Vehicle Control Unit',
     stack: ['VHDL', 'Vivado', 'Python'],
     body: `<h4>Overview</h4>Implemented a pipelined matrix multiplier on Xilinx Artix-7 for real-time inference at 100 MHz with 8-bit fixed-point arithmetic.
 
@@ -842,7 +842,7 @@ const PROJECTS = [
   },
   {
     img: 'images/sdr.jpg',
-    title: 'SDR Spectrum Analyzer',
+    title: 'VectorNav Interface PCB',
     stack: ['GNU Radio', 'Python', 'RTL-SDR'],
     body: `<h4>Overview</h4>Built a software-defined radio spectrum analyzer using RTL-SDR and GNU Radio. Displays 20 MHz bandwidth with real-time FFT waterfall.
 
@@ -850,7 +850,7 @@ const PROJECTS = [
   },
   {
     img: 'images/bms.jpg',
-    title: 'BMS for Li-Ion Pack',
+    title: 'ThermaGlass',
     stack: ['STM32', 'CAN', 'KiCad'],
     body: `<h4>Overview</h4>Designed a 4S battery management system with cell balancing, SOC estimation via Coulomb counting, and CAN bus telemetry.
 
@@ -858,7 +858,7 @@ const PROJECTS = [
   },
   {
     img: 'images/linefollower.jpg',
-    title: 'Autonomous Line Follower',
+    title: 'Superheterodyne receiver',
     stack: ['C', 'ATmega', 'Eagle'],
     body: `<h4>Overview</h4>Designed a PID-controlled robot with IR array sensing, achieving sub-5 ms control loop latency on a custom 2-layer PCB.
 
