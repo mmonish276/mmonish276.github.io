@@ -421,6 +421,43 @@
     .section-window { padding: 2rem 1.25rem; }
     nav { display: none; }
   }
+.project-card { cursor: none; }
+ 
+  .project-modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 2500;
+    background: rgba(5,5,8,0.88); backdrop-filter: blur(10px);
+    align-items: center; justify-content: center; padding: 2rem;
+  }
+  .project-modal-overlay.open { display: flex; }
+  .project-modal {
+    background: var(--surface-solid); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2.5rem; width: min(700px, 92vw);
+    max-height: 85vh; overflow-y: auto; position: relative;
+    animation: modalIn 0.25s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+  .project-modal-close {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text); width: 2rem; height: 2rem; border-radius: 50%;
+    font-size: 1.1rem; cursor: none; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .project-modal-close:hover { border-color: var(--accent); color: var(--accent); }
+  .project-modal-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+  .project-modal-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; }
+  .project-modal-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .project-modal-body { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; white-space: pre-line; }
+  .project-modal-body h4 {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 1.25rem 0 0.5rem; opacity: 0.85;
+  }
+  .project-modal-body h4:first-child { margin-top: 0; }
 </style>
 </head>
 <body>
@@ -785,7 +822,15 @@
     </div>
   </div>
 </section>
-
+<div class="project-modal-overlay" id="projectModalOverlay">
+  <div class="project-modal">
+    <button class="project-modal-close" onclick="closeProject()">×</button>
+    <div class="project-modal-icon" id="pmIcon"></div>
+    <h3 class="project-modal-title" id="pmTitle"></h3>
+    <div class="project-modal-stack" id="pmStack"></div>
+    <div class="project-modal-body" id="pmBody"></div>
+  </div>
+</div>
 <footer>
   <span style="color:var(--accent)">// </span>Built with electrons & caffeine · &copy; 2025
 </footer>
@@ -795,7 +840,59 @@
 const themeBtn = document.getElementById('themeToggle');
 const glassBtn = document.getElementById('glassToggle');
 let isDark = true, isGlass = false;
-
+const PROJECTS = [
+  {
+    icon: '⚡', title: 'FPGA Neural Accelerator', stack: ['VHDL','Vivado','Python'],
+    body: `<h4>Overview</h4>Implemented a pipelined matrix multiplier on Xilinx Artix-7 for real-time inference at 100 MHz with 8-bit fixed-point arithmetic.
+ 
+<h4>Design</h4>Add pipeline stages, memory architecture, and quantization details here.
+ 
+<h4>Results</h4>Add latency, throughput, and resource utilization numbers here.`
+  },
+  {
+    icon: '📡', title: 'SDR Spectrum Analyzer', stack: ['GNU Radio','Python','RTL-SDR'],
+    body: `<h4>Overview</h4>Built a software-defined radio spectrum analyzer using RTL-SDR and GNU Radio. Displays 20 MHz bandwidth with real-time FFT waterfall.
+ 
+<h4>Details</h4>Add more here.`
+  },
+  {
+    icon: '🔋', title: 'BMS for Li-Ion Pack', stack: ['STM32','CAN','KiCad'],
+    body: `<h4>Overview</h4>Designed a 4S battery management system with cell balancing, SOC estimation via Coulomb counting, and CAN bus telemetry.
+ 
+<h4>Details</h4>Add more here.`
+  },
+  {
+    icon: '🤖', title: 'Autonomous Line Follower', stack: ['C','ATmega','Eagle'],
+    body: `<h4>Overview</h4>Designed a PID-controlled robot with IR array sensing, achieving sub-5 ms control loop latency on a custom 2-layer PCB.
+ 
+<h4>Details</h4>Add more here.`
+  },
+  {
+    icon: '🌡', title: 'IoT Environmental Monitor', stack: ['ESP32','MQTT','FreeRTOS'],
+    body: `<h4>Overview</h4>Multi-sensor node with MQTT over WiFi for temperature, humidity, PM2.5, and CO₂. OTA firmware updates via ESP-IDF.
+ 
+<h4>Details</h4>Add more here.`
+  },
+  {
+    icon: '🔬', title: 'Analog Front-End Design', stack: ['LTSpice','Op-Amp','PCB'],
+    body: `<h4>Overview</h4>Low-noise amplifier and anti-aliasing filter chain for a biomedical ECG acquisition system with 24-bit ADC integration.
+ 
+<h4>Details</h4>Add more here.`
+  }
+];
+ 
+function openProject(i) {
+  const p = PROJECTS[i];
+  document.getElementById('pmIcon').textContent = p.icon;
+  document.getElementById('pmTitle').textContent = p.title;
+  document.getElementById('pmStack').innerHTML = p.stack.map(s => `<span class="stack-pill">${s}</span>`).join('');
+  document.getElementById('pmBody').innerHTML = p.body;
+  document.getElementById('projectModalOverlay').classList.add('open');
+}
+function closeProject() {
+  document.getElementById('projectModalOverlay').classList.remove('open');
+}
+ 
 themeBtn.addEventListener('click', () => {
   isDark = !isDark;
   document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
@@ -1110,6 +1207,9 @@ function drawCursor() {
   requestAnimationFrame(drawCursor);
 }
 requestAnimationFrame(drawCursor);
+document.getElementById('projectModalOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'projectModalOverlay') closeProject();
+});
 </script>
 
 
